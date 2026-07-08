@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pixel Zoo — Interactive Retro Gallery</title>
-    <meta name="description" content="Explore and customize pixel-art animal sprites in an interactive, ultra-premium gallery with scale controls, retro palettes, and custom stats.">
+    <title>Pixel Museum — Retro Animals & Fruits Gallery</title>
+    <meta name="description" content="Explore and inspect retro pixel-art animal and fruit sprites in an interactive, ultra-premium museum gallery with scaling and screen shaders.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,20 +23,28 @@
         <header class="app-header">
             <div class="logo-area">
                 <span class="pixel-tag">RETRO</span>
-                <h1>PIXEL ZOO</h1>
+                <h1>PIXEL MUSEUM</h1>
             </div>
             
             <div class="search-filter-bar">
                 <div class="search-wrapper">
                     <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                    <input type="text" id="search-input" placeholder="Search animals by name..." aria-label="Search animals">
+                    <input type="text" id="search-input" placeholder="Search items by name, category, taste, habitat..." aria-label="Search items">
                 </div>
                 
                 <div class="filter-group">
                     <button class="filter-btn active" data-category="all" id="filter-all">All</button>
+                    <!-- Animals -->
                     <button class="filter-btn" data-category="wild" id="filter-wild">Wild</button>
                     <button class="filter-btn" data-category="domestic" id="filter-domestic">Domestic</button>
-                    <button class="filter-btn" data-category="predator" id="filter-predators">Predators</button>
+                    <button class="filter-btn" data-category="predator" id="filter-predator">Predators</button>
+                    <!-- Fruits -->
+                    <button class="filter-btn" data-category="berry" id="filter-berry">Berries</button>
+                    <button class="filter-btn" data-category="citrus" id="filter-citrus">Citrus</button>
+                    <button class="filter-btn" data-category="melon" id="filter-melon">Melons</button>
+                    <button class="filter-btn" data-category="stone" id="filter-stone">Stone Fruits</button>
+                    <button class="filter-btn" data-category="tropical" id="filter-tropical">Tropical</button>
+                    <button class="filter-btn" data-category="pome" id="filter-pome">Pome Fruits</button>
                 </div>
             </div>
         </header>
@@ -47,11 +55,11 @@
             <aside class="sidebar-panel">
                 <div class="card panel-card">
                     <h3>Museum Directory</h3>
-                    <p class="panel-desc">A premium interactive viewer for retro 50x50 animal sprites. Click any card to inspect stats, adjust magnification scales, and apply custom screen palettes.</p>
+                    <p class="panel-desc">A premium interactive viewer for retro 50x50 pixel-art animal and fruit sprites. Click any card to inspect stats, adjust magnification scales, and apply custom screen shaders.</p>
                     
                     <div class="stat-row">
-                        <span class="stat-label">Total Species</span>
-                        <span class="stat-val" id="species-count">15</span>
+                        <span class="stat-label">Total Items</span>
+                        <span class="stat-val" id="species-count">137</span>
                     </div>
                     <div class="stat-row">
                         <span class="stat-label">Format</span>
@@ -87,7 +95,7 @@
             </aside>
 
             <!-- Grid Container -->
-            <section class="grid-container" aria-label="Animal Grid">
+            <section class="grid-container" aria-label="Museum Grid">
                 <div class="animal-grid" id="animal-grid">
                     <!-- Cards will be populated dynamically by app.js -->
                 </div>
@@ -95,7 +103,7 @@
                 <!-- No Results fallback -->
                 <div class="no-results" id="no-results-element" style="display: none;">
                     <div class="pixel-sad-face">:(</div>
-                    <h3>No animals found</h3>
+                    <h3>No items found</h3>
                     <p>Try searching for another species or clear filters</p>
                     <button class="clear-btn" id="clear-search-btn">Reset Search</button>
                 </div>
@@ -121,7 +129,7 @@
                     <div class="pixel-canvas-frame">
                         <div class="screen-glare"></div>
                         <div class="pixel-canvas-inner">
-                            <img id="modal-animal-img" src="" alt="Animal Image" class="pixelated-large">
+                            <img id="modal-animal-img" src="" alt="Museum Image" class="pixelated-large">
                         </div>
                     </div>
                     
@@ -155,11 +163,11 @@
 
                     <div class="info-specs">
                         <div class="spec-card">
-                            <span class="spec-label">Diet</span>
+                            <span class="spec-label" id="modal-spec-1-label">Diet</span>
                             <span class="spec-val" id="modal-diet">Herbivore</span>
                         </div>
                         <div class="spec-card">
-                            <span class="spec-label">Habitat</span>
+                            <span class="spec-label" id="modal-spec-2-label">Habitat</span>
                             <span class="spec-val" id="modal-habitat">Forests</span>
                         </div>
                         <div class="spec-card font-pixel">
@@ -183,6 +191,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="app.js"></script>
+    <script src="app.js?v=7"></script>
 </body>
 </html>

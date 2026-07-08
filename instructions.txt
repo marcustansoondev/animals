@@ -1,30 +1,49 @@
-# Pixel Zoo Setup Instructions
+# Pixel Museum Setup Instructions
 
-This document explains how to reconstruct this interactive Pixel Zoo web application gallery from scratch, generate the 30 procedural pixel-art sprites, and host it locally in a new environment.
+This document explains how to reconstruct this interactive Pixel Museum web application gallery from scratch, generate the 85 procedural animal sprites and 52 fruit sprites (totaling 137 items), and host it locally in a new environment or chat session.
+
+---
+
+## Quick Start: Restoring in a New Chat Session
+
+If you are importing this project into a new chat session, simply upload `pixel_zoo.zip` and run the following command to restore all files (HTML/CSS/JS code, directory structures, PNG images, and Python generator scripts) instantly:
+
+```bash
+unzip -o pixel_zoo.zip
+```
 
 ---
 
 ## Step 1: Create the Web App Frontend
 
-Create the following files in the project workspace:
+If you are rebuilding the frontend code manually:
 
-1. **`index.html`**: Structures the dashboard page layout with a glassmorphic sidebar panel, search/filter bars, a responsive animal grid, and a pixel-art details modal containing magnification controls and palette emulation shaders.
+1. **`index.html`**: Structures the dashboard page layout with a glassmorphic sidebar panel, search/filter bars, a responsive item grid, and a pixel-art details modal containing magnification controls and palette emulation shaders.
 2. **`styles.css`**: Embeds typography, defines dynamic background blur glow orbs, configures custom themes (Midnight Purple, Cyberpunk Neon, Matrix Green, Classic Dark), and implements strict `image-rendering: pixelated;` rules to render retro sprites with crisp block edges.
-3. **`app.js`**: Controls dataset configurations, responsive keyword search (by name, habitat, or diet), filters, global slider scaling, modal trigger loops, canvas filter application, and accessibility focus trapping.
+3. **`app.js`**: Controls dataset configurations for the 137 items, responsive keyword search, category filters (Wild, Domestic, Predators, Berries, Citrus, Melons, Stone Fruits, Tropical, Pome Fruits), global slider scaling, modal trigger loops, canvas filter application, and accessibility focus trapping.
 
 ---
 
-## Step 2: Generate the 30 Procedural Sprites
+## Step 2: Generate the 85 Animal Sprites and 52 Fruit Sprites
 
-If AI image generation models are unavailable or rate-limited, you can programmatically generate retro 50x50 PNG animal sprites using Python and the `Pillow` library:
+To programmatically generate all 137 retro 50x50 PNG sprites and automatically build the database:
 
-1. Create a script called `generate_sprites.py`.
-2. Define a list of 30 new animal names along with a 10x10 text grid representing their pixel configurations (e.g. body colors, accents, eyes, appendages).
-3. Set the rgb values for color maps (e.g., yellow and black for bees, grey and yellow for wolves).
-4. Run the script to write all 30 PNG files:
-   ```bash
-   python3 generate_sprites.py
-   ```
+Run `generate_all.py` in the workspace:
+```bash
+python3 generate_all.py
+```
+
+This single command orchestrates the entire pipeline:
+1. Generates 30 base animal sprites.
+2. Overwrites face definitions for base animal species.
+3. Tint-derives 25 animal species.
+4. Appends the 25 derived species to `app.js`.
+5. Appends the 15 additional animal species and generates their sprites.
+6. Overwrites and renders all the high-quality custom side body profiles for animals.
+7. Generates 52 custom fruit sprites in `images/fruits/` and appends their metadata.
+8. Normalizes file paths in `app.js`'s database entries.
+
+The PNG animal sprites will be located in `images/animals/` and the fruit sprites in `images/fruits/`.
 
 ---
 
@@ -34,17 +53,14 @@ Start a background Python HTTP server on port 8080 to serve the directory:
 ```bash
 python3 -m http.server 8080
 ```
-Open your browser or Web Preview on port 8080 to view, search, scale, and filter all 45 animals.
+Open your browser or Web Preview on port 8080 to view, search, scale, and filter all 137 items.
 
 ---
 
 ## Step 4: Package the Files into a ZIP Archive
 
-Run the following command to compress the HTML page, CSS styles, JavaScript logic, generator script, instructions text, and all 45 PNG sprites together:
+Run the following command to compress the HTML page, CSS styles, JavaScript logic, generator scripts, instructions text, and all 137 sprites together:
 ```bash
-python3 -c "import zipfile, glob; zipf = zipfile.ZipFile('pixel_zoo.zip', 'w'); [zipf.write(f) for f in ['index.html', 'styles.css', 'app.js', 'generate_sprites.py', 'instructions.txt'] + glob.glob('*_50x50.png')]; zipf.close()"
+python3 -c "import zipfile, glob; zipf = zipfile.ZipFile('pixel_zoo.zip', 'w'); [zipf.write(f) for f in ['index.html', 'styles.css', 'app.js', 'instructions.txt'] + glob.glob('*.py') + glob.glob('images/animals/*_50x50.png') + glob.glob('images/fruits/*_50x50.png')]; zipf.close()"
 ```
-This produces `pixel_zoo.zip` which can be downloaded directly using:
-```bash
-dl pixel_zoo.zip
-```
+This produces `pixel_zoo.zip` which contains the complete museum.

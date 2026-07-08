@@ -6,8 +6,8 @@ def generate_all_sprites():
         return Image.new("RGBA", (50, 50), (255, 255, 255, 0))
 
     def save_sprite(name, img):
-        img.save(f"/home/student_04_f96f4a2bbe7c/{name}_50x50.png")
-        print(f"Generated {name}_50x50.png")
+        img.save(f"images/animals/{name}_50x50.png")
+        print(f"Generated images/animals/{name}_50x50.png")
 
     # 1. DEER
     img = get_canvas()
