@@ -2843,7 +2843,7 @@ function renderGallery() {
         // Dynamic image dimensions — kitchen items only have 50x50
         const res = item.group === "kitchen" ? "50x50" : spriteResolution;
         const sizePx = parseInt(res) * cardScale;
-        const displaySrc = item.filename.replace("_50x50.png", `_${res}.png?v=sharp`);
+        const displaySrc = item.filename.replace("_50x50.png", `_${res}.png?v=clean`);
         const badgeLabel = item.diet || item.type || item.category;
         
         card.innerHTML = `
@@ -2937,7 +2937,7 @@ function openModal(item) {
     
     // Set image — kitchen and vehicles only have 50x50
     const res = (item.group === "kitchen" || item.group === "vehicles") ? "50x50" : spriteResolution;
-    const displaySrc = item.filename.replace("_50x50.png", `_${res}.png?v=sharp`);
+    const displaySrc = item.filename.replace("_50x50.png", `_${res}.png?v=clean`);
     modalImg.src = displaySrc;
     modalImg.alt = `${item.name} Sprite`;
     modalDownloadLink.href = displaySrc;

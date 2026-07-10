@@ -96,31 +96,35 @@ def add_outline_and_quantize(emoji_img):
     
     pixels = canvas.load()
     
-    # Create outline mask
-    outline = []
+    # Clean up noisy anti-aliased alpha to make edges perfectly solid
     for y in range(50):
         for x in range(50):
             r, g, b, a = pixels[x, y]
-            if a > 0:
+            if a > 127:
+                pixels[x, y] = (r, g, b, 255)
+            else:
+                pixels[x, y] = (0, 0, 0, 0)
+    
+    # Create crisp pixel-art outline using 4-neighbor connectivity
+    outline = []
+    for y in range(50):
+        for x in range(50):
+            if pixels[x, y][3] > 0:
                 continue
             
-            # Check neighbors
             is_edge = False
-            for dy in [-1, 0, 1]:
-                for dx in [-1, 0, 1]:
-                    nx, ny = x + dx, y + dy
-                    if 0 <= nx < 50 and 0 <= ny < 50:
-                        _, _, _, na = pixels[nx, ny]
-                        if na > 128:
-                            is_edge = True
-                            break
-                if is_edge: break
+            for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+                nx, ny = x + dx, y + dy
+                if 0 <= nx < 50 and 0 <= ny < 50:
+                    if pixels[nx, ny][3] > 127:
+                        is_edge = True
+                        break
             
             if is_edge:
                 outline.append((x, y))
                 
     for ox, oy in outline:
-        pixels[ox, oy] = (20, 20, 20, 255) # Dark thick outline
+        pixels[ox, oy] = (25, 25, 25, 255) # Clean dark outline
         
     # Quantize to 10 colors
     rgb_img = Image.new("RGB", (50, 50), (255, 255, 255))
@@ -132,7 +136,7 @@ def add_outline_and_quantize(emoji_img):
     final_img = quantized.convert("RGBA")
     final_pixels = final_img.load()
     
-    # Restore exact alpha transparency (including outline)
+    # Restore exact alpha transparency (including new outline)
     for y in range(50):
         for x in range(50):
             orig_a = alpha.getpixel((x, y))
