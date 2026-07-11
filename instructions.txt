@@ -1,6 +1,6 @@
 # Pixel Museum Setup Instructions
 
-This document explains how to reconstruct this interactive Pixel Museum web application gallery from scratch, generate the 135 procedural animal sprites, 127 fruit sprites, 270 kitchen sprites, 200 vehicle sprites, 150 electronics sprites, and 200 clothing sprites (totaling 1082 items), and host it locally in a new environment or chat session.
+This document explains how to reconstruct this interactive Pixel Museum web application gallery from scratch, generate the 135 procedural animal sprites, 127 fruit sprites, 270 kitchen sprites, 200 vehicle sprites, 250 electronics sprites, and 200 clothing sprites (totaling 1182 items), and host it locally in a new environment or chat session.
 
 ---
 
@@ -20,7 +20,7 @@ If you are rebuilding the frontend code manually:
 
 1. **`index.html`**: Structures the dashboard page layout with a glassmorphic sidebar panel, search/filter bars, a responsive item grid, and a pixel-art details modal containing magnification controls and palette emulation shaders.
 2. **`styles.css`**: Embeds typography, defines dynamic background blur glow orbs, configures custom themes (Midnight Purple, Cyberpunk Neon, Matrix Green, Classic Dark), and implements strict `image-rendering: pixelated;` rules to render retro sprites with crisp block edges.
-3. **`app.js`**: Controls dataset configurations for the 1082 items, responsive keyword search, category filters (Animals, Fruits, Kitchen, Vehicles, Electronics, Clothing), global slider scaling, modal trigger loops, canvas filter application, and accessibility focus trapping.
+3. **`app.js`**: Controls dataset configurations for the 1182 items, responsive keyword search, category filters (Animals, Fruits, Kitchen, Vehicles, Electronics, Clothing), global slider scaling, modal trigger loops, canvas filter application, and accessibility focus trapping.
 
 ---
 
@@ -109,9 +109,12 @@ python3 generate_vehicles3.py
 python3 generate_vehicles4.py
 ```
 
-15. Run `generate_electronics.py` in the workspace to build the 150 electronics sprites (highly detailed with realistic 3D shading, reflection glares, and drop shadows; <= 10 colors):
+15. Run `generate_electronics.py`, `generate_electronics2.py`, and `generate_electronics3.py` in the workspace to build the 250 electronics sprites (highly detailed with realistic 3D shading, reflection glares, and drop shadows; <= 10 colors). Then, run `enhance_electronics_details.py` to apply clean solid colors (without dithering noise) and thick black outlines suitable for pixel coloring art to batches 2 and 3:
 ```bash
 python3 generate_electronics.py
+python3 generate_electronics2.py
+python3 generate_electronics3.py
+python3 enhance_electronics_details.py
 ```
 
 16. Run `generate_clothing.py` in the workspace to build the 200 clothing sprites (highly detailed with realistic 3D shading, reflection glares, and drop shadows; <= 10 colors):
@@ -156,7 +159,7 @@ Start a background Python HTTP server on port 8080 to serve the directory:
 ```bash
 python3 -m http.server 8080
 ```
-Open your browser or Web Preview on port 8080 to view, search, scale, and filter all 1082 items.
+Open your browser or Web Preview on port 8080 to view, search, scale, and filter all 1182 items.
 
 ---
 
