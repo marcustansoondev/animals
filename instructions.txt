@@ -151,6 +151,11 @@ python3 generate_clothing_variants.py
 python3 generate_vehicle_variants.py
 ```
 
+17d. **Generate Electronics Color Variants:** Run `generate_electronics_variants.py` to procedurally generate 50 new colorful variants of basic electronics items (using strict <= 8 color quantization) ideal for pixel coloring art:
+```bash
+python3 generate_electronics_variants.py
+```
+
 18. **Generate and Enhance Vegetables:** Run `generate_vegetables.py`, `generate_vegetables2.py`, `generate_vegetables3.py`, and `generate_vegetables4.py` in the workspace to build the 200 vegetable sprites, and run `enhance_vegetables.py` and `enhance_vegetables_details.py` to apply solid clean colors, thick black outlines, and realistic shading suitable for pixel coloring art to all of them:
 ```bash
 python3 generate_vegetables.py

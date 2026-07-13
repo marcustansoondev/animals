@@ -82,6 +82,10 @@ PINK = (255, 105, 180, 255)
 CRIMSON = (220, 20, 60, 255)
 NEON_GREEN = (57, 255, 20, 255)
 WHITE_VAR = (245, 245, 245, 255)
+GREY = ge.GREY
+WHITE = ge.WHITE
+BLACK = ge.BLACK
+SILVER = ge.SILVER
 
 variants = [
     # 1. Smartphone
