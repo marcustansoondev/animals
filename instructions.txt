@@ -1,6 +1,6 @@
 # Pixel Museum Setup Instructions
 
-This document explains how to reconstruct this interactive Pixel Museum web application gallery from scratch, generate the 135 procedural animal sprites, 127 fruit sprites, 200 vegetable sprites, 270 kitchen sprites, 200 vehicle sprites, 250 electronics sprites, and 250 clothing sprites (totaling 1432 items), and host it locally in a new environment or chat session.
+This document explains how to reconstruct this interactive Pixel Museum web application gallery from scratch, generate the 135 procedural animal sprites, 127 fruit sprites, 200 vegetable sprites, 270 kitchen sprites, 350 vehicle sprites, 300 electronics sprites, 300 clothing sprites, and 202 weather sprites (totaling 1884 items), and host it locally in a new environment or chat session.
 
 ---
 
@@ -171,7 +171,14 @@ python3 enhance_vegetables.py
 python3 enhance_vegetables_details.py
 ```
 
-The PNG sprites will be located in `images/animals/`, `images/fruits/`, `images/vegetables/`, `images/kitchen/`, `images/vehicles/`, `images/electronics/`, and `images/clothing/`.
+The PNG sprites will be located in `images/animals/`, `images/fruits/`, `images/vegetables/`, `images/kitchen/`, `images/vehicles/`, `images/electronics/`, `images/clothing/`, and `images/weather/`.
+        
+19. Run `generate_weather.py`, `generate_weather_variants.py`, and `enhance_weather.py` in the workspace to build the 202 weather sprites (enhanced with thick kid-friendly outlines, flat solid colors, and unique weather conditions; <= 10 colors):
+```bash
+python3 generate_weather.py
+python3 generate_weather_variants.py
+python3 enhance_weather.py
+```
 
 ---
 
@@ -203,7 +210,7 @@ Start a background Python HTTP server on port 8080 to serve the directory:
 ```bash
 python3 -m http.server 8080
 ```
-Open your browser or Web Preview on port 8080 to view, search, scale, and filter all 1432 items.
+Open your browser or Web Preview on port 8080 to view, search, scale, and filter all 1784 items.
 
 ---
 
@@ -211,7 +218,7 @@ Open your browser or Web Preview on port 8080 to view, search, scale, and filter
 
 Run the following command to compress the HTML page, CSS styles, JavaScript logic, generator scripts, instructions text, and all sprites together:
 ```bash
-python3 -c "import zipfile, glob; zipf = zipfile.ZipFile('pixel_zoo.zip', 'w'); [zipf.write(f) for f in ['index.html', 'styles.css', 'app.js', 'instructions.txt'] + glob.glob('*.py') + glob.glob('images/animals/*.png') + glob.glob('images/fruits/*.png') + glob.glob('images/vegetables/*.png') + glob.glob('images/kitchen/*.png') + glob.glob('images/vehicles/*.png') + glob.glob('images/electronics/*.png') + glob.glob('images/clothing/*.png')]; zipf.close()"
+python3 -c "import zipfile, glob; zipf = zipfile.ZipFile('pixel_zoo.zip', 'w'); [zipf.write(f) for f in ['index.html', 'styles.css', 'app.js', 'instructions.txt'] + glob.glob('*.py') + glob.glob('images/animals/*.png') + glob.glob('images/fruits/*.png') + glob.glob('images/vegetables/*.png') + glob.glob('images/kitchen/*.png') + glob.glob('images/vehicles/*.png') + glob.glob('images/electronics/*.png') + glob.glob('images/clothing/*.png') + glob.glob('images/weather/*.png')]; zipf.close()"
 ```
 This produces `pixel_zoo.zip` which contains the complete museum.
 
