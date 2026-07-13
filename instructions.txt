@@ -1,6 +1,6 @@
 # Pixel Museum Setup Instructions
 
-This document explains how to reconstruct this interactive Pixel Museum web application gallery from scratch, generate the 135 procedural animal sprites, 127 fruit sprites, 200 vegetable sprites, 270 kitchen sprites, 200 vehicle sprites, 250 electronics sprites, and 200 clothing sprites (totaling 1382 items), and host it locally in a new environment or chat session.
+This document explains how to reconstruct this interactive Pixel Museum web application gallery from scratch, generate the 135 procedural animal sprites, 127 fruit sprites, 200 vegetable sprites, 270 kitchen sprites, 200 vehicle sprites, 250 electronics sprites, and 250 clothing sprites (totaling 1432 items), and host it locally in a new environment or chat session.
 
 ---
 
@@ -117,14 +117,16 @@ python3 generate_electronics3.py
 python3 enhance_electronics_details.py
 ```
 
-16. Run `generate_clothing.py` in the workspace to build the 200 clothing sprites (highly detailed with realistic 3D shading, reflection glares, and drop shadows; <= 10 colors):
+16. Run `generate_clothing.py` and `generate_clothing_extra.py` in the workspace to build the 250 clothing sprites (highly detailed with realistic 3D shading, reflection glares, and drop shadows; <= 10 colors):
 ```bash
 python3 generate_clothing.py
+python3 generate_clothing_extra.py
 ```
 
-17. **Apply Pixel Coloring Art Enhancements to Clothing:** Run `enhance_clothing.py` to remove dithering noise, apply solid clean colors, and add thick black outlines suitable for pixel coloring art to all 200 clothing items:
+17. **Apply Pixel Coloring Art Enhancements to Clothing:** Run `enhance_clothing.py` to apply solid colors and thick black outlines to all clothing items, and run `enhance_clothing_extra.py` to algorithmically add clean, solid cell-shading to the extra 50 clothing items (colors <= 10):
 ```bash
 python3 enhance_clothing.py
+python3 enhance_clothing_extra.py
 ```
 
 18. **Generate and Enhance Vegetables:** Run `generate_vegetables.py`, `generate_vegetables2.py`, `generate_vegetables3.py`, and `generate_vegetables4.py` in the workspace to build the 200 vegetable sprites, and run `enhance_vegetables.py` and `enhance_vegetables_details.py` to apply solid clean colors, thick black outlines, and realistic shading suitable for pixel coloring art to all of them:
@@ -169,7 +171,7 @@ Start a background Python HTTP server on port 8080 to serve the directory:
 ```bash
 python3 -m http.server 8080
 ```
-Open your browser or Web Preview on port 8080 to view, search, scale, and filter all 1382 items.
+Open your browser or Web Preview on port 8080 to view, search, scale, and filter all 1432 items.
 
 ---
 
