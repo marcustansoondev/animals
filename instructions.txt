@@ -50,6 +50,18 @@ python3 generate_fruits2.py
 python3 generate_fruits3.py
 ```
 
+2c. **Fix & Improve All Fruit Sprites:** Run `enhance_fruits_v2.py` to comprehensively fix all 50×50 fruit sprites. This script:
+   - **Replaces 27 bland/sparse fruit images** (salak, tamarind, bergamot, bilberry, breadfruit, cherimoya, cherry, custard_apple, elderberry, grape, langsat, monstera_deliciosa, physalis, pineapple, rambutan, soursop, starfruit, barberry, black_currant, cloudberry, mulberry, red_currant, banana, blackberry, boysenberry, marionberry, raspberry) with detailed hand-crafted pixel art featuring realistic botanical details
+   - **Quantizes all 127 images** to ≤ 10 colors each (no dithering noise, no added outlines), making them clean and perfectly suited for a kids' pixel coloring game
+```bash
+python3 enhance_fruits_v2.py
+```
+
+2d. **De-noise All Fruit Sprites:** Run `denoise_fruits.py` to remove any remaining noisy "sprinkle" pixels from all 50×50 fruit images. The script detects isolated pixels that differ from all their neighbors and replaces them with the most common neighbor color (3 passes), then re-quantizes to ≤ 10 colors:
+```bash
+python3 denoise_fruits.py
+```
+
 3. Run `generate_animals2.py` in the workspace to build the additional 50 animal sprites:
 ```bash
 python3 generate_animals2.py
