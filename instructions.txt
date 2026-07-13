@@ -61,9 +61,13 @@ wget -qO twemoji.zip https://github.com/twitter/twemoji/archive/refs/tags/v14.0.
 python3 generate_twemoji_animals.py
 ```
 
-4b. **Fix & Enhance All Animal Sprites:** Run `enhance_animals.py` to replace 50 placeholder/incorrect animal sprites with unique hand-crafted pixel art (armadillo, camel, capybara, chameleon, chimpanzee, crow, donkey, emu, falcon, ferret, iguana, lemur, moose, opossum, platypus, red_panda, walrus, weasel, ant, spider, stingray, jellyfish, seahorse, starfish, cuttlefish, eel, gecko, komodo_dragon, salamander, toad, dragonfly, grasshopper, mantis, firefly, echidna, mole, mongoose, meerkat, anteater, pangolin, tapir, okapi, hyena, bandicoot, gopher, groundhog, prairie_dog, wombat, quokka, tasmanian_devil), and apply clean cell-shading with black outlines (no dithering noise) to all 135 50×50 animal images (≤ 10 colors each):
+4b. **Fix, Improve & Deduplicate All Animal Sprites:** Run `enhance_animals_v2.py` to comprehensively fix all 50×50 animal sprites. This script:
+   - **Fixes 10 groups of duplicate images** (alligator/crocodile, beetle/ladybug, beluga/narwhal/whale, bison/yak, cheetah/jaguar/leopard/panther, chipmunk/squirrel, dugong/manatee/sea_lion/seal, goose/swan, hedgehog/porcupine, ostrich/pelican/puffin) — each animal now has unique, distinguishing pixel art
+   - **Replaces 12 bland/placeholder sprites** (ant, camel, crow, firefly, gecko, lemur, pangolin, salamander, seahorse, starfish, stingray, tapir) with realistic detailed art
+   - **Improves 26 additional animals** (jellyfish, cuttlefish, eel, komodo_dragon, toad, dragonfly, grasshopper, mantis, echidna, mole, mongoose, meerkat, anteater, okapi, hyena, bandicoot, gopher, groundhog, prairie_dog, wombat, quokka, tasmanian_devil, armadillo, capybara, chameleon, chimpanzee, donkey, emu, falcon, ferret, iguana, moose, opossum, platypus, red_panda, walrus, weasel, spider) with hand-crafted pixel art including realistic species-specific details
+   - **Quantizes all 135 images** to ≤ 10 colors each (no dithering noise, no added outlines), making them clean and perfectly suited for a kids' pixel coloring game
 ```bash
-python3 enhance_animals.py
+python3 enhance_animals_v2.py
 ```
 
 5. Run `generate_kitchen.py` in the workspace to build the first 50 kitchen sprites:
