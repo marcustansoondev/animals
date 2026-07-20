@@ -186,9 +186,25 @@ python3 generate_buildings.py
 python3 enhance_buildings_details.py
 ```
 
-21. Run `generate_food_desserts.py` in the workspace to build the 300 unique Food & Dessert sprites (algorithmically enhanced with realistic 3D cell-shading, volumetric inner bevel lighting, highly detailed layered geometry, and strict <= 10 color quantization for high-quality, child-friendly pixel designs):
+21. Run `generate_food_desserts.py` and `refine_sparse_foods.py` in the workspace to build the 300 unique Food & Dessert sprites (algorithmically enhanced with realistic 3D cell-shading, volumetric inner bevel lighting, highly detailed layered geometry, and strict <= 10 color quantization for high-quality, child-friendly pixel designs). The refinement script ensures all sprites are adequately sized, detailed, and completely free of dithering noise for easy coloring:
 ```bash
 python3 generate_food_desserts.py
+python3 refine_sparse_foods.py
+```
+
+22. **Convert External Food Icons:** Run `populate_more_twemoji.py` to download 50+ high-quality external Twemoji vectors (e.g. Hamburger, Bento Box, Pizza, Dumplings, Sushi) and strictly algorithmically convert them to our clean, black-outlined, non-noisy, 50x50 <= 10 colors pixel art format suitable for coloring:
+```bash
+python3 populate_more_twemoji.py
+```
+
+23. **Generate Custom Pizza Variants:** Run `generate_pizza_variants.py` to programmatically draw and inject 10 custom pixel-art pizza styles (Margherita, BBQ Chicken, Veggie, Supreme, White, Mushroom, Olive, Sausage, Jalapeno, and a whole pie). All generated directly into strictly quantized <= 10 color 50x50 sprites:
+```bash
+python3 generate_pizza_variants.py
+```
+
+24. **Generate Food Color Variants:** Run `generate_food_color_variants.py` to programmatically load 10 base dessert/drink sprites (e.g. Macaron, Donut, Soda) and dynamically shift their HSV color palettes to create 50 brand new flavor variants (like Matcha, Lemon, Blueberry, Cola) while strictly adhering to the <= 10 color rule with zero noise:
+```bash
+python3 generate_food_color_variants.py
 ```
 
 ---
